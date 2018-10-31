@@ -20,8 +20,12 @@ import (
 /*
 
 Who can help me book a flight with Delta?
+help with Delta
+who can help me with detla
+I need a delta expert
 
-Here is a person who has skills matching "Delta".
+
+
 */
 
 const Fields = "name,title,skills"
@@ -32,8 +36,9 @@ func NewIntent() chatblox.Intent {
 	return chatblox.Intent{
 		Type: chatblox.MatchRegexpCapture,
 		Regexps: []*regexp.Regexp{
-			regexp.MustCompile(`^(?i)^\s*(?:find|query|search|who can help with) (?P<query_any>.+?)\s*\??\s*$`),
-			regexp.MustCompile(`^(?i)^\s*(?:who\scan\shelp\sme\sbook\sa\sflight\swith) (?P<query_any>.+?)\s*\??\s*$`),
+			regexp.MustCompile(`^(?i)^\s*(?:find|query|search|help with|who can help with|skill) (?P<query_any>.+?)\s*[\?.]?\s*$`),
+			regexp.MustCompile(`^(?i)^\s*(?:who can help me book a flight with|who can help me with) (?P<query_any>.+?)\s*[\?.]?\s*$`),
+			regexp.MustCompile(`^(?i)^\s*I need an? (?P<query_any>.+)(?:\s+expert)\s*[\?.]?\s*$`),
 		},
 		HandleIntent: handleIntent,
 	}
