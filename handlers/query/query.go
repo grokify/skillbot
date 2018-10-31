@@ -38,7 +38,7 @@ func NewIntent() chatblox.Intent {
 		Regexps: []*regexp.Regexp{
 			regexp.MustCompile(`^(?i)^\s*(?:find|query|search|help with|who can help with|skill) (?P<query_any>.+?)\s*[\?.]?\s*$`),
 			regexp.MustCompile(`^(?i)^\s*(?:who can help me book a flight with|who can help me with) (?P<query_any>.+?)\s*[\?.]?\s*$`),
-			regexp.MustCompile(`^(?i)^\s*I need an? (?P<query_any>.+)(?:\s+expert)\s*[\?.]?\s*$`),
+			regexp.MustCompile(`^(?i)^\s*(?:I need an?|Find an?) (?P<query_any>.+)(?:\s+expert)\s*[\?.]?\s*$`),
 		},
 		HandleIntent: handleIntent,
 	}
