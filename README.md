@@ -21,3 +21,12 @@ RINGCENTRAL_SERVER_URL=https://platform.ringcentral.com
 ALGOLIA_APP_CREDENTIALS_JSON={"applicationId": "myApplicationId", "searchOnlyApiKey": "mySearchOnlyApiKey", "adminApiKey": "myAdminApiKey", "analyticsApiKey": "myAnalyticsApiKey", "monitoringApiKey": "myMonitoringApiKey"}
 ALGOLIA_INDEX=skillbot
 ```
+
+#### Test
+
+Use AWS Gateway Proxy POST wiht the following data with the data in [`sample.message.json`](sample.message.json) with same `ownerId` and `groupId` values for `nethttp`.
+
+
+#### Example
+
+`Glip> Who can help me book a flight with $airline`
