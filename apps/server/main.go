@@ -17,13 +17,13 @@ import (
 
 func LoadEnv() string {
 	// Check and load environment file if necessary
-	engine := os.Getenv("BOTBLOX_ENGINE")
+	engine := os.Getenv("CHATBLOX_ENGINE")
 	if len(engine) == 0 {
 		err := cfg.LoadDotEnvSkipEmpty(os.Getenv("ENV_PATH"), "./.env")
 		if err != nil {
 			log.Warn(err)
 		}
-		engine = os.Getenv("BOTBLOX_ENGINE")
+		engine = os.Getenv("CHATBLOX_ENGINE")
 	}
 	return engine
 }
