@@ -2,13 +2,14 @@
 
 Example Skillbot for Glip.
 
+This is a work in progress app and not ready for use.
+
 ## Configuration
 
 ### AWS
 
 * Runtime: Go 1.x
 * Handler: `main`
-
 
 ```
 CHATBLOX_ENGINE=awslambda
