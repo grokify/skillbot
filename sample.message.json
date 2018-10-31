@@ -1,0 +1,24 @@
+{
+  "uuid":"6971018553045519161",
+  "event":"/restapi/v1.0/glip/posts",
+  "timestamp":"2018-10-31T04:09:34.946Z",
+  "subscriptionId":"11112222-3333-4444-5555-666677778888",
+  "ownerId":"1588815021",
+  "body":{
+    "id":"6288140107780",
+    "groupId":"201488072706",
+    "type":"TextMessage",
+    "text":"find flight",
+    "creatorId":"557601020",
+    "addedPersonIds":null,
+    "creationTime":"2018-10-31T04:09:34.890Z",
+    "lastModifiedTime":"2018-10-31T04:09:34.890Z",
+    "attachments":null,
+    "activity":null,
+    "title":null,
+    "iconUri":null,
+    "iconEmoji":null,
+    "mentions":null,
+    "eventType":"PostAdded"
+  }
+}
