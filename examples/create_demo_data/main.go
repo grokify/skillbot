@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/csv"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -86,12 +87,24 @@ func PersonsToObjects(persons []Person) []algoliasearch.Object {
 	return objects
 }
 
-func IndexAlgoliaPersons(persons []Person) error {
-	client, err := algoliautil.NewClientFromJSONAdmin([]byte(os.Getenv("ALGOLIA_APP_CREDENTIALS_JSON")))
+func GetIndex(config []byte, indexName string) (*algoliasearch.Index, error) {
+	client, err := algoliautil.NewClientFromJSONAdmin(config)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	index := client.InitIndex("expertskills")
+	index := client.InitIndex(indexName)
+	return &index, nil
+}
+
+func IndexAlgoliaPersons(index algoliasearch.Index, persons []Person) error {
+	/*
+		index, err := GetIndex(config, indexName)
+		client, err := algoliautil.NewClientFromJSONAdmin([]byte(os.Getenv("ALGOLIA_APP_CREDENTIALS_JSON")))
+		if err != nil {
+			return err
+		}
+		index := client.InitIndex("expertskills")
+	*/
 	if 1 == 0 {
 		res, err := index.AddObjects(PersonsToObjects(persons))
 		if err != nil {
@@ -144,6 +157,28 @@ func WriteCsvPersons(persons []Person) error {
 	return nil
 }
 
+func SearchAndDelete(index algoliasearch.Index, qry string) error {
+	res, err := index.Search(qry, nil)
+	if err != nil {
+		return err
+	}
+	fmtutil.PrintJSON(res)
+	fmt.Printf("NUM_HITS [%v]\n", len(res.Hits))
+	for _, hit := range res.Hits {
+		objectID := hit["objectID"]
+		fmt.Printf("ObjectId [%v]\n", objectID)
+		if 1 == 0 {
+			res, err := index.DeleteObject(objectID)
+			if err != nil {
+				return err
+			}
+			fmtutil.PrintJSON(res)
+		}
+	}
+
+	return nil
+}
+
 func main() {
 	err := config.LoadDotEnvSkipEmpty(os.Getenv("ENV_PATH"), "../.env")
 	//err := config.LoadDotEnvSkipEmpty("../.env")
@@ -151,19 +186,37 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println(os.Getenv("ALGOLIA_APP_CREDENTIALS_JSON"))
+
+	indexPtr, err := GetIndex(
+		[]byte(os.Getenv("ALGOLIA_APP_CREDENTIALS_JSON")),
+		os.Getenv("ALGOLIA_INDEX"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	index := *indexPtr
+
 	persons := GetTestData()
 
-	indexAlgoliaPersons := true
+	indexAlgoliaPersons := false
 	writeCsvPersons := false
+	searchAndDelete := true
 
 	if indexAlgoliaPersons {
-		if err := IndexAlgoliaPersons(persons); err != nil {
+		if err := IndexAlgoliaPersons(index, persons); err != nil {
 			log.Fatal(err)
 		}
 	}
 
 	if writeCsvPersons {
 		if err := WriteCsvPersons(persons); err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	if searchAndDelete {
+		err := SearchAndDelete(index, "flight")
+		if err != nil {
 			log.Fatal(err)
 		}
 	}
