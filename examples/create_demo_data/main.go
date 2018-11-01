@@ -168,7 +168,7 @@ func SearchAndDelete(index algoliasearch.Index, qry string) error {
 		objectID := hit["objectID"]
 		fmt.Printf("ObjectId [%v]\n", objectID)
 		if 1 == 0 {
-			res, err := index.DeleteObject(objectID)
+			res, err := index.DeleteObject(objectID.(string))
 			if err != nil {
 				return err
 			}
