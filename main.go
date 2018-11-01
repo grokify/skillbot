@@ -12,7 +12,9 @@ import (
 	"github.com/grokify/chatblox"
 	"github.com/grokify/chatblox/glip"
 
+	"github.com/grokify/skillbot/handlers/help"
 	"github.com/grokify/skillbot/handlers/query"
+	"github.com/grokify/skillbot/handlers/sorry"
 )
 
 func LoadEnv() string {
@@ -49,7 +51,9 @@ func main() {
 	// Set intents
 	intentRouter := chatblox.IntentRouter{
 		Intents: []chatblox.Intent{
-			query.NewIntent()}} // Default
+			help.NewIntent(),
+			query.NewIntent(),
+			sorry.NewIntent()}}
 
 	// Run engine
 	switch engine {
