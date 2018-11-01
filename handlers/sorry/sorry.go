@@ -26,6 +26,6 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 	log.Info("BUILD_POST_EXPERTFINDER_QUERY")
 	reqBody := rc.GlipCreatePost{}
 
-	reqBody.Text = "I couldn't understand you.\n\n" + help.InstructionsMD
+	reqBody.Text = "I'm sorry but I couldn't understand you.\n\n" + help.InstructionsMD
 	return reqBody
 }
