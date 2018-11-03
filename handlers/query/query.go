@@ -116,7 +116,7 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 				attachment.Fields = append(attachment.Fields,
 					rc.GlipMessageAttachmentFieldsInfo{
 						Title: "Name",
-						Value: hit["name"].(string),
+						Value: markdown.BoldText(hit["name"].(string), ""),
 						Style: "Short"})
 			}
 		}
@@ -124,7 +124,7 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 			attachment.Fields = append(attachment.Fields,
 				rc.GlipMessageAttachmentFieldsInfo{
 					Title: "Title",
-					Value: hit["title"].(string),
+					Value: markdown.BoldText(hit["title"].(string), qry),
 					Style: "Short"})
 		}
 		if _, ok := fieldsMap["email"]; ok {
