@@ -9,7 +9,6 @@ import (
 	rc "github.com/grokify/go-ringcentral/client"
 	"github.com/grokify/go-ringcentral/clientutil/glipgroups"
 	hum "github.com/grokify/gotilla/net/httputilmore"
-	//log "github.com/sirupsen/logrus"
 
 	"github.com/grokify/chatblox"
 	"github.com/grokify/go-glip/examples"
@@ -22,10 +21,7 @@ type Factory struct {
 }
 
 func (f *Factory) GetGlipTeams() (glipgroups.GroupsSet, error) {
-	return glipgroups.NewGroupsSetApiRequest(
-		f.HTTPClient,
-		f.ServerURL,
-		"Team")
+	return glipgroups.NewGroupsSetApiRequest(f.HTTPClient, f.ServerURL, "Team")
 }
 
 func (f *Factory) NewIntent() chatblox.Intent {
@@ -41,8 +37,7 @@ func (f *Factory) NewIntent() chatblox.Intent {
 func (f *Factory) HandleIntent(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *chatblox.GlipPostEventInfo) (*hum.ResponseInfo, error) {
 	qry, ok := slots["query_any"]
 	if !ok {
-		return bot.SendGlipPost(
-			glipPostEventInfo,
+		return bot.SendGlipPost(glipPostEventInfo,
 			rc.GlipCreatePost{
 				Text: "I'm sorry but I didn't understand you.\n\nPlease say `alert <my teamm>` to post alert into \"my team\"."})
 	}
@@ -50,10 +45,8 @@ func (f *Factory) HandleIntent(bot *chatblox.Bot, slots map[string]string, glipP
 
 	teamsSet, err := f.GetGlipTeams()
 	if err != nil {
-		return bot.SendGlipPost(
-			glipPostEventInfo,
-			rc.GlipCreatePost{
-				Text: "I'm sorry but I ran into a problem."})
+		return bot.SendGlipPost(glipPostEventInfo,
+			rc.GlipCreatePost{Text: "I'm sorry but I ran into a problem."})
 	}
 	groups := teamsSet.FindGroupsByNameLower(qry)
 
