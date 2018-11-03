@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 
+	ru "github.com/grokify/go-ringcentral/clientutil"
 	cfg "github.com/grokify/gotilla/config"
 	ro "github.com/grokify/oauth2more/ringcentral"
 	log "github.com/sirupsen/logrus"
@@ -12,6 +13,8 @@ import (
 	"github.com/grokify/chatblox"
 	"github.com/grokify/chatblox/glip"
 
+	"github.com/grokify/skillbot/handlers/alert"
+	"github.com/grokify/skillbot/handlers/alert_team"
 	"github.com/grokify/skillbot/handlers/help"
 	"github.com/grokify/skillbot/handlers/query"
 	"github.com/grokify/skillbot/handlers/sorry"
@@ -48,9 +51,25 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/oauth2callback", http.HandlerFunc(glipHandler.HandleOAuthNetHttp))
 
+	httpClient, err := ro.NewHttpClientEnvFlexStatic("")
+	if err != nil {
+		log.Fatal(err)
+	}
+	serverURL := os.Getenv("RINGCENTRAL_SERVER_URL")
+	alertteamFactory := alertteam.Factory{
+		HTTPClient: httpClient,
+		ServerURL:  serverURL}
+	apiClient, err := ru.NewApiClientHttpClientBaseURL(httpClient, serverURL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	alertteamFactory.APIClient = apiClient
+
 	// Set intents
 	intentRouter := chatblox.IntentRouter{
 		Intents: []chatblox.Intent{
+			alertteamFactory.NewIntent(),
+			alert.NewIntent(),
 			help.NewIntent(),
 			query.NewIntent(),
 			sorry.NewIntent()}}
