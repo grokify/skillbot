@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	rc "github.com/grokify/go-ringcentral/client"
-	//ru "github.com/grokify/go-ringcentral/clientutil"
 	"github.com/grokify/go-ringcentral/clientutil/glipgroups"
 	hum "github.com/grokify/gotilla/net/httputilmore"
 	//log "github.com/sirupsen/logrus"
