@@ -41,14 +41,20 @@ func (f *Factory) HandleIntent(bot *chatblox.Bot, slots map[string]string, glipP
 			rc.GlipCreatePost{
 				Text: "I'm sorry but I didn't understand you.\n\nPlease say `alert <my teamm>` to post alert into \"my team\"."})
 	}
-	qry = strings.TrimSpace(qry)
+	qry = strings.ToLower(strings.TrimSpace(qry))
 
 	teamsSet, err := f.GetGlipTeams()
 	if err != nil {
 		return bot.SendGlipPost(glipPostEventInfo,
 			rc.GlipCreatePost{Text: "I'm sorry but I ran into a problem."})
 	}
-	groups := teamsSet.FindGroupsByNameLower(qry)
+
+	groups := []glipgroups.Group{}
+	if qry == "all" {
+		groups = teamsSet.GroupsSorted()
+	} else {
+		groups = teamsSet.FindGroupsByNameLower(qry)
+	}
 
 	if len(groups) == 0 {
 		reqBody := rc.GlipCreatePost{
