@@ -3,7 +3,6 @@ module github.com/grokify/skillbot
 go 1.21.1
 
 require (
-	github.com/algolia/algoliasearch-client-go v2.25.0+incompatible
 	github.com/algolia/algoliasearch-client-go/v3 v3.31.0
 	github.com/grokify/algoliautil v0.1.4
 	github.com/grokify/chatblox v0.2.3

@@ -14,9 +14,10 @@ import (
 	"github.com/grokify/mogo/encoding/csvutil"
 	"github.com/grokify/mogo/fmt/fmtutil"
 
-	"github.com/algolia/algoliasearch-client-go/algoliasearch"
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 )
+
+type agoliasearchV2Object map[string]any
 
 type Person struct {
 	Email  string   `json:"email"`
@@ -31,8 +32,8 @@ func (p *Person) ToJSON() ([]byte, error) {
 	return json.Marshal(p)
 }
 
-func (p *Person) ToAlgoliaObject() algoliasearch.Object {
-	return algoliasearch.Object{
+func (p *Person) ToAlgoliaObject() agoliasearchV2Object {
+	return agoliasearchV2Object{
 		"objectID": p.Email,
 		"email":    p.Email,
 		"name":     p.Name,
@@ -80,8 +81,8 @@ func GetTestData() []Person {
 	}
 }
 
-func PersonsToObjects(persons []Person) []algoliasearch.Object {
-	objects := []algoliasearch.Object{}
+func PersonsToObjects(persons []Person) []agoliasearchV2Object {
+	objects := []agoliasearchV2Object{}
 	for _, p := range persons {
 		objects = append(objects, p.ToAlgoliaObject())
 	}
