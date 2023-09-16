@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	rc "github.com/grokify/go-ringcentral/client"
-	hum "github.com/grokify/gotilla/net/httputilmore"
+	// rc "github.com/grokify/go-ringcentral/client"
+	rc "github.com/grokify/go-ringcentral-client/office/v1/client"
+	hum "github.com/grokify/mogo/net/http/httputilmore"
 
 	"github.com/grokify/chatblox"
 )

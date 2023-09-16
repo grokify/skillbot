@@ -5,16 +5,18 @@ import (
 	"net/http"
 	"os"
 
-	ru "github.com/grokify/go-ringcentral/clientutil"
-	cfg "github.com/grokify/gotilla/config"
-	ro "github.com/grokify/oauth2more/ringcentral"
+	//ru "github.com/grokify/go-ringcentral/clientutil"
+	ru "github.com/grokify/go-ringcentral-client/office/v1/util"
+	"github.com/grokify/goauth"
+	ro "github.com/grokify/goauth/ringcentral"
+	cfg "github.com/grokify/mogo/config"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/grokify/chatblox"
 	"github.com/grokify/chatblox/glip"
 
 	"github.com/grokify/skillbot/handlers/alert_demo/alert"
-	"github.com/grokify/skillbot/handlers/alert_demo/alert_team"
+	alertteam "github.com/grokify/skillbot/handlers/alert_demo/alert_team"
 	"github.com/grokify/skillbot/handlers/bot_info/botinfo"
 	"github.com/grokify/skillbot/handlers/bot_info/botteams"
 	"github.com/grokify/skillbot/handlers/help"
@@ -26,7 +28,7 @@ func LoadEnv() string {
 	// Check and load environment file if necessary
 	engine := os.Getenv("CHATBLOX_ENGINE")
 	if len(engine) == 0 {
-		err := cfg.LoadDotEnvSkipEmpty(os.Getenv("ENV_PATH"), "./.env")
+		_, err := cfg.LoadDotEnv([]string{os.Getenv("ENV_PATH"), "./.env"}, 1)
 		if err != nil {
 			log.Warn(err)
 		}
@@ -36,7 +38,7 @@ func LoadEnv() string {
 }
 
 func NewGlipHandler() glip.RcOAuthManager {
-	creds := ro.ApplicationCredentials{
+	creds := goauth.CredentialsOAuth2{
 		ClientID:     os.Getenv("RINGCENTRAL_CLIENT_ID"),
 		ClientSecret: os.Getenv("RINGCENTRAL_CLIENT_SECRET"),
 		ServerURL:    os.Getenv("RINGCENTRAL_SERVER_URL"),
@@ -51,10 +53,10 @@ func main() {
 	glipHandler := NewGlipHandler()
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/oauth2callback", http.HandlerFunc(glipHandler.HandleOAuthNetHttp))
+	mux.HandleFunc("/oauth2callback", http.HandlerFunc(glipHandler.HandleOAuthNetHTTP))
 
 	serverURL := os.Getenv("RINGCENTRAL_SERVER_URL")
-	httpClient, err := ro.NewHttpClientEnvFlexStatic("")
+	httpClient, err := ro.NewHTTPClientEnvFlexStatic("")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -93,10 +95,10 @@ func main() {
 	switch engine {
 	case "awslambda":
 		log.Info("Starting Engine [awslambda]")
-		chatblox.ServeAwsLambda(intentRouter)
+		chatblox.ServeAWSLambda(intentRouter)
 	case "nethttp":
 		log.Info("Starting Engine [nethttp]")
-		chatblox.ServeNetHttp(intentRouter, mux)
+		chatblox.ServeNetHTTP(intentRouter, mux)
 	default:
 		log.Fatal(fmt.Sprintf("E_NO_HTTP_ENGINE: [%v]", engine))
 	}

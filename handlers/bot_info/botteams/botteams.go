@@ -3,9 +3,11 @@ package botteams
 import (
 	"net/http"
 
-	rc "github.com/grokify/go-ringcentral/client"
-	"github.com/grokify/go-ringcentral/clientutil/glipgroups"
-	hum "github.com/grokify/gotilla/net/httputilmore"
+	//rc "github.com/grokify/go-ringcentral/client"
+	//"github.com/grokify/go-ringcentral/clientutil/glipgroups"
+	rc "github.com/grokify/go-ringcentral-client/office/v1/client"
+	"github.com/grokify/go-ringcentral-client/office/v1/util/glipgroups"
+	hum "github.com/grokify/mogo/net/http/httputilmore"
 
 	"github.com/grokify/chatblox"
 )

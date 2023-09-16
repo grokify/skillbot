@@ -3,18 +3,19 @@ package main
 import (
 	"encoding/csv"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"strings"
 
-	"github.com/grokify/gotilla/config"
-	"github.com/grokify/gotilla/encoding/csvutil"
-	"github.com/grokify/gotilla/fmt/fmtutil"
-
 	"github.com/grokify/algoliautil"
+	"github.com/grokify/mogo/config"
+	"github.com/grokify/mogo/encoding/csvutil"
+	"github.com/grokify/mogo/fmt/fmtutil"
 
 	"github.com/algolia/algoliasearch-client-go/algoliasearch"
+	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 )
 
 type Person struct {
@@ -87,16 +88,19 @@ func PersonsToObjects(persons []Person) []algoliasearch.Object {
 	return objects
 }
 
-func GetIndex(config []byte, indexName string) (*algoliasearch.Index, error) {
-	client, err := algoliautil.NewClientFromJSONAdmin(config)
+func GetIndex(config []byte, indexName string) (*search.Index, error) {
+	client, err := algoliautil.NewClientJSON(config)
 	if err != nil {
 		return nil, err
 	}
 	index := client.InitIndex(indexName)
-	return &index, nil
+	return index, nil
 }
 
-func IndexAlgoliaPersons(index algoliasearch.Index, persons []Person) error {
+func IndexAlgoliaPersons(index *search.Index, persons []Person) error {
+	if index == nil {
+		return errors.New("algolia index cannot be nil")
+	}
 	/*
 		index, err := GetIndex(config, indexName)
 		client, err := algoliautil.NewClientFromJSONAdmin([]byte(os.Getenv("ALGOLIA_APP_CREDENTIALS_JSON")))
@@ -106,14 +110,15 @@ func IndexAlgoliaPersons(index algoliasearch.Index, persons []Person) error {
 		index := client.InitIndex("expertskills")
 	*/
 	if 1 == 0 {
-		res, err := index.AddObjects(PersonsToObjects(persons))
+		res, err := index.SaveObjects(PersonsToObjects(persons))
 		if err != nil {
 			return err
 		}
 		fmtutil.PrintJSON(res)
 	}
 	if 1 == 1 {
-		res, err := index.UpdateObjects(PersonsToObjects(persons))
+		// res, err := index.UpdateObjects(PersonsToObjects(persons))
+		res, err := index.ReplaceAllObjects(PersonsToObjects(persons))
 		if err != nil {
 			return err
 		}
@@ -157,7 +162,7 @@ func WriteCsvPersons(persons []Person) error {
 	return nil
 }
 
-func SearchAndDelete(index algoliasearch.Index, qry string) error {
+func SearchAndDelete(index *search.Index, qry string) error {
 	res, err := index.Search(qry, nil)
 	if err != nil {
 		return err
@@ -180,7 +185,7 @@ func SearchAndDelete(index algoliasearch.Index, qry string) error {
 }
 
 func main() {
-	err := config.LoadDotEnvSkipEmpty(os.Getenv("ENV_PATH"), "../.env")
+	_, err := config.LoadDotEnv([]string{os.Getenv("ENV_PATH"), "../.env"}, 1)
 	//err := config.LoadDotEnvSkipEmpty("../.env")
 	if err != nil {
 		log.Fatal(err)
@@ -194,7 +199,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	index := *indexPtr
+	// index := *indexPtr
 
 	persons := GetTestData()
 
@@ -203,7 +208,7 @@ func main() {
 	searchAndDelete := true
 
 	if indexAlgoliaPersons {
-		if err := IndexAlgoliaPersons(index, persons); err != nil {
+		if err := IndexAlgoliaPersons(indexPtr, persons); err != nil {
 			log.Fatal(err)
 		}
 	}
@@ -215,7 +220,7 @@ func main() {
 	}
 
 	if searchAndDelete {
-		err := SearchAndDelete(index, "flight")
+		err := SearchAndDelete(indexPtr, "flight")
 		if err != nil {
 			log.Fatal(err)
 		}

@@ -6,12 +6,12 @@ import (
 	"regexp"
 	"strings"
 
-	rc "github.com/grokify/go-ringcentral/client"
-	//"github.com/grokify/gotilla/fmt/fmtutil"
-	"github.com/grokify/gotilla/html/htmlutil"
-	hum "github.com/grokify/gotilla/net/httputilmore"
-	"github.com/grokify/gotilla/text/markdown"
-	"github.com/grokify/gotilla/type/strutil"
+	// rc "github.com/grokify/go-ringcentral/client"
+	rc "github.com/grokify/go-ringcentral-client/office/v1/client"
+	"github.com/grokify/mogo/html/htmlutil"
+	hum "github.com/grokify/mogo/net/http/httputilmore"
+	"github.com/grokify/mogo/text/markdown"
+	"github.com/grokify/mogo/type/stringsutil"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/grokify/chatblox"
@@ -23,8 +23,6 @@ Who can help me book a flight with Delta?
 help with Delta
 who can help me with detla
 I need a delta expert
-
-
 
 */
 
@@ -79,7 +77,7 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 		return reqBody
 	}
 
-	client, err := chatblox.GetAlgoliaApiClient(bot.BotConfig)
+	client, err := chatblox.GetAlgoliaAPIClient(bot.BotConfig)
 	if err != nil {
 		log.Info(fmt.Sprintf("ALGOLIA_CLIENT_ERROR [%v]", err))
 		reqBody.Text = "I had a problem opening my database. Please try again."
@@ -146,7 +144,7 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 			}
 		}
 		if hit["skills"] != nil {
-			skills := strings.Join(strutil.InterfaceToSliceString(hit["skills"]), ", ")
+			skills := strings.Join(stringsutil.InterfaceToSliceString(hit["skills"]), ", ")
 			skills = markdown.BoldText(skills, qry)
 			attachment.Fields = append(attachment.Fields,
 				rc.GlipMessageAttachmentFieldsInfo{

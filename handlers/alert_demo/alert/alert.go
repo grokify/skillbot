@@ -1,8 +1,9 @@
 package alert
 
 import (
-	rc "github.com/grokify/go-ringcentral/client"
-	hum "github.com/grokify/gotilla/net/httputilmore"
+	// rc "github.com/grokify/go-ringcentral/client"
+	rc "github.com/grokify/go-ringcentral-client/office/v1/client"
+	hum "github.com/grokify/mogo/net/http/httputilmore"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/grokify/chatblox"
@@ -23,5 +24,5 @@ func handleIntent(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo 
 
 func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *chatblox.GlipPostEventInfo) rc.GlipCreatePost {
 	log.Info("BUILD_POST_ALERT")
-	return examples.GetExamplePostAlertWarning()
+	return examples.ExamplePostBodyAlertWarning()
 }
