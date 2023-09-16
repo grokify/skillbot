@@ -5,8 +5,8 @@
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
 
- [build-status-svg]: https://github.com/grokify/skilbot/workflows/test/badge.svg
- [build-status-url]: https://github.com/grokify/skilbot/actions
+ [build-status-svg]: https://github.com/grokify/skillbot/workflows/test/badge.svg
+ [build-status-url]: https://github.com/grokify/skillbot/actions
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/skillbot
  [goreport-url]: https://goreportcard.com/report/github.com/grokify/skillbot
  [docs-godoc-svg]: https://img.shields.io/badge/docs-godoc-blue.svg
