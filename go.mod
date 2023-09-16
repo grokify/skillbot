@@ -1,6 +1,6 @@
 module github.com/grokify/skillbot
 
-go 1.21.1
+go 1.21
 
 require (
 	github.com/algolia/algoliasearch-client-go/v3 v3.31.0
