@@ -100,13 +100,13 @@ func buildPost(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *ch
 			Fields: []rc.GlipMessageAttachmentFieldsInfo{},
 		}
 
-		avatarUri := ""
+		avatarURI := ""
 		if hit["avatar"] != nil {
-			avatarUri = strings.TrimSpace(hit["avatar"].(string))
+			avatarURI = strings.TrimSpace(hit["avatar"].(string))
 		}
 
 		if hit["name"] != nil {
-			if 1 == 1 && len(avatarUri) > 0 {
+			if len(avatarURI) > 0 {
 				attachment.Author = rc.GlipMessageAttachmentAuthorInfo{
 					Name:    hit["name"].(string),
 					IconUri: hit["avatar"].(string)}

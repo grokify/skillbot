@@ -51,7 +51,7 @@ func (f *Factory) HandleIntent(bot *chatblox.Bot, slots map[string]string, glipP
 			rc.GlipCreatePost{Text: "I'm sorry but I ran into a problem."})
 	}
 
-	groups := []glipgroups.Group{}
+	var groups []glipgroups.Group
 	if qry == "all" {
 		groups = teamsSet.GroupsSorted()
 	} else {
