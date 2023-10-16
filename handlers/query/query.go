@@ -9,7 +9,7 @@ import (
 	// rc "github.com/grokify/go-ringcentral/client"
 	rc "github.com/grokify/go-ringcentral-client/office/v1/client"
 	"github.com/grokify/mogo/html/htmlutil"
-	hum "github.com/grokify/mogo/net/http/httputilmore"
+	"github.com/grokify/mogo/net/http/httputilmore"
 	"github.com/grokify/mogo/text/markdown"
 	"github.com/grokify/mogo/type/stringsutil"
 	log "github.com/sirupsen/logrus"
@@ -54,7 +54,7 @@ func stringToMap(s, delim string) map[string]int {
 	return fields
 }
 
-func handleIntent(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *chatblox.GlipPostEventInfo) (*hum.ResponseInfo, error) {
+func handleIntent(bot *chatblox.Bot, slots map[string]string, glipPostEventInfo *chatblox.GlipPostEventInfo) (*httputilmore.ResponseInfo, error) {
 	glipPost := buildPost(bot, slots, glipPostEventInfo)
 	return bot.SendGlipPost(glipPostEventInfo, glipPost)
 }
