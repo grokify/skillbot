@@ -9,7 +9,7 @@ require (
 	github.com/grokify/go-glip v0.5.10
 	github.com/grokify/go-ringcentral-client v0.3.16
 	github.com/grokify/goauth v0.20.3
-	github.com/grokify/mogo v0.56.0
+	github.com/grokify/mogo v0.60.0
 	github.com/sirupsen/logrus v1.9.3
 )
 
