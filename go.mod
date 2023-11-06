@@ -4,12 +4,12 @@ go 1.21
 
 require (
 	github.com/algolia/algoliasearch-client-go/v3 v3.31.0
-	github.com/grokify/algoliautil v0.1.4
+	github.com/grokify/algoliautil v0.1.5
 	github.com/grokify/chatblox v0.2.3
 	github.com/grokify/go-glip v0.5.10
 	github.com/grokify/go-ringcentral-client v0.3.16
 	github.com/grokify/goauth v0.20.4
-	github.com/grokify/mogo v0.57.0
+	github.com/grokify/mogo v0.58.0
 	github.com/sirupsen/logrus v1.9.3
 )
 
