@@ -9,7 +9,7 @@ require (
 	github.com/grokify/go-glip v0.5.12
 	github.com/grokify/go-ringcentral-client v0.3.18
 	github.com/grokify/goauth v0.20.9
-	github.com/grokify/mogo v0.62.7
+	github.com/grokify/mogo v0.62.8
 	github.com/sirupsen/logrus v1.9.3
 )
 
@@ -55,7 +55,7 @@ require (
 	go.opentelemetry.io/otel/metric v1.21.0 // indirect
 	go.opentelemetry.io/otel/trace v1.21.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3 // indirect
+	golang.org/x/exp v0.0.0-20240119083558-1b970713d09a // indirect
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/oauth2 v0.16.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
