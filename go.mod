@@ -6,8 +6,8 @@ toolchain go1.23.0
 
 require (
 	github.com/algolia/algoliasearch-client-go/v3 v3.31.2
-	github.com/grokify/algoliautil v0.1.8
-	github.com/grokify/chatblox v0.2.6
+	github.com/grokify/algoliautil v0.1.9
+	github.com/grokify/chatblox v0.2.7
 	github.com/grokify/go-glip v0.5.16
 	github.com/grokify/go-ringcentral-client v0.3.23
 	github.com/grokify/goauth v0.22.0
@@ -38,7 +38,7 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grokify/bitcoinmath v0.1.0 // indirect
 	github.com/grokify/go-scim-client v0.1.21 // indirect
-	github.com/grokify/googleutil v0.3.0 // indirect
+	github.com/grokify/googleutil v0.3.1 // indirect
 	github.com/grokify/sogo v0.8.10 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/jessevdk/go-flags v1.6.1 // indirect
