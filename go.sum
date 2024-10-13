@@ -79,8 +79,8 @@ github.com/grokify/algoliautil v0.1.9 h1:E0JaWUyxGvT9Rtuz3MJPIX9UNXCALGp9FMRJ+sz
 github.com/grokify/algoliautil v0.1.9/go.mod h1:uvHOqJJu2lELVNm3ZEMrOkBkd6HrQv1U0oNU580ci28=
 github.com/grokify/bitcoinmath v0.1.0 h1:NySFRW09cYQlTXrUw6QpjNgtrudC5QlgsqgXWWNN+50=
 github.com/grokify/bitcoinmath v0.1.0/go.mod h1:Y8OyDefB55NHGzi+uJshYmE4Hn5juIQqJahsQJN5o2k=
-github.com/grokify/chatblox v0.2.7 h1:VQSBEJRabp40q3hDhswOk2lRwt36S96NvNuJIbOE5V8=
-github.com/grokify/chatblox v0.2.7/go.mod h1:I1s6pwfFoUUxjTOcX0wJ7pPbaHfH7md1v2ivPmbLl30=
+github.com/grokify/chatblox v0.2.8 h1:yq6ENu3DGwJ7UJRr032NGpJ+nhLQgXWizih7CkpTR+E=
+github.com/grokify/chatblox v0.2.8/go.mod h1:awAk/xlRPeTv5b7GiHBHkV1dddnl4kSpz2CrHBdZUq4=
 github.com/grokify/go-glip v0.5.16 h1:C4zE/UyIC1tv+Rk8qDrfWuoENkVx7vkA4Bo2HxjBIyw=
 github.com/grokify/go-glip v0.5.16/go.mod h1:EpkVNtS6XNv5jicLQWOWrnOUVYoodSAIN2RZtkGJ36g=
 github.com/grokify/go-ringcentral-client v0.3.23 h1:Y5rBzBmQDmU9ri5tfu9VCTyUIZzVM+Qx76fRPkaFlbo=
@@ -89,8 +89,8 @@ github.com/grokify/go-scim-client v0.1.21 h1:e946JVDh3p3/zfTkOAmFsEM3Za9R7E5p8SZ
 github.com/grokify/go-scim-client v0.1.21/go.mod h1:qe9dXjJPeGsAXQV6z7/Umhuok/qlId495y/DeXQkv5c=
 github.com/grokify/goauth v0.22.1 h1:2RdMW3g1o47Xf/HDrtGa/oNCWLrQTFpD0A/lTMTchT4=
 github.com/grokify/goauth v0.22.1/go.mod h1:e/3Iap/2RAWe1CuI1mpdYgKLKu1Byzs3mPNKGEJxru4=
-github.com/grokify/googleutil v0.3.1 h1:B/Mbj9gD5+SN977WgROoI+nYozpa5dXxHbOIsaXCx/c=
-github.com/grokify/googleutil v0.3.1/go.mod h1:uGDyz6zeIuhDVxLlvtXRY1lNIxDmdTgs4JvMAZpiG6s=
+github.com/grokify/gogoogle v0.4.0 h1:NkKLU5tHGmc4BF0xlushBql/6klckkb5UsNfsK2g6Ag=
+github.com/grokify/gogoogle v0.4.0/go.mod h1:dCEj10TXV/LYok35C6Ei33gZIrffp6AWD6rJthh70Hw=
 github.com/grokify/mogo v0.64.12 h1:BNrZ1qBFuX4qu5722CW6qtqu/mrrsZ3bhKu/w1KowKg=
 github.com/grokify/mogo v0.64.12/go.mod h1:lDhfYIiOhJo7C2U3aL00PlUU9gLvmTONi4MdIWoGmGM=
 github.com/grokify/sogo v0.8.11 h1:/AA4jjlFDdZPSJMW3i38yPLO8yY2I0EjsydH1StR77A=
@@ -197,8 +197,8 @@ google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8/go.mod h1:JiN7NxoA
 google.golang.org/genproto v0.0.0-20190819201941-24fa4b261c55/go.mod h1:DMBHOl98Agz4BDEuKkezgsaosCRResVns1a3J2ZsMNc=
 google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013/go.mod h1:NbSheEEYHJ7i3ixzK3sjbqSGDJWnxyFXZblF3eUsNvo=
 google.golang.org/genproto v0.0.0-20241007155032-5fefd90f89a9 h1:nFS3IivktIU5Mk6KQa+v6RKkHUpdQpphqGNLxqNnbEk=
-google.golang.org/genproto/googleapis/api v0.0.0-20240827150818-7e3bb234dfed h1:3RgNmBoI9MZhsj3QxC+AP/qQhNwpCLOvYDYYsFrhFt0=
-google.golang.org/genproto/googleapis/api v0.0.0-20240827150818-7e3bb234dfed/go.mod h1:OCdP9MfskevB/rbYvHTsXTtKC+3bHWajPdoKgjcYkfo=
+google.golang.org/genproto/googleapis/api v0.0.0-20240930140551-af27646dc61f h1:jTm13A2itBi3La6yTGqn8bVSrc3ZZ1r8ENHlIXBfnRA=
+google.golang.org/genproto/googleapis/api v0.0.0-20240930140551-af27646dc61f/go.mod h1:CLGoBuH1VHxAUXVPP8FfPwPEVJB6lz3URE5mY2SuayE=
 google.golang.org/genproto/googleapis/rpc v0.0.0-20241007155032-5fefd90f89a9 h1:QCqS/PdaHTSWGvupk2F/ehwHtGc0/GYkT+3GAcR1CCc=
 google.golang.org/genproto/googleapis/rpc v0.0.0-20241007155032-5fefd90f89a9/go.mod h1:GX3210XPVPUjJbTUbvwI8f2IpZDMZuPJWDzDuebbviI=
 google.golang.org/grpc v1.19.0/go.mod h1:mqu4LbDTu4XGKhr4mRzUsmM4RtVoemTSY81AxZiDr8c=
