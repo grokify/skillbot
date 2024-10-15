@@ -11,7 +11,7 @@ require (
 	github.com/grokify/go-glip v0.5.16
 	github.com/grokify/go-ringcentral-client v0.3.23
 	github.com/grokify/goauth v0.22.1
-	github.com/grokify/mogo v0.64.12
+	github.com/grokify/mogo v0.65.0
 	github.com/sirupsen/logrus v1.9.3
 )
 
