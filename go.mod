@@ -10,8 +10,8 @@ require (
 	github.com/grokify/chatblox v0.2.8
 	github.com/grokify/go-glip v0.5.16
 	github.com/grokify/go-ringcentral-client v0.3.23
-	github.com/grokify/goauth v0.22.1
-	github.com/grokify/mogo v0.64.12
+	github.com/grokify/goauth v0.22.2
+	github.com/grokify/mogo v0.65.0
 	github.com/sirupsen/logrus v1.9.3
 )
 
@@ -39,7 +39,7 @@ require (
 	github.com/grokify/bitcoinmath v0.1.0 // indirect
 	github.com/grokify/go-scim-client v0.1.21 // indirect
 	github.com/grokify/gogoogle v0.4.0 // indirect
-	github.com/grokify/sogo v0.8.11 // indirect
+	github.com/grokify/sogo v0.8.12 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/jessevdk/go-flags v1.6.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
