@@ -55,8 +55,8 @@ github.com/grokify/bitcoinmath v0.1.0 h1:NySFRW09cYQlTXrUw6QpjNgtrudC5QlgsqgXWWN
 github.com/grokify/bitcoinmath v0.1.0/go.mod h1:Y8OyDefB55NHGzi+uJshYmE4Hn5juIQqJahsQJN5o2k=
 github.com/grokify/chatblox v0.2.8 h1:yq6ENu3DGwJ7UJRr032NGpJ+nhLQgXWizih7CkpTR+E=
 github.com/grokify/chatblox v0.2.8/go.mod h1:awAk/xlRPeTv5b7GiHBHkV1dddnl4kSpz2CrHBdZUq4=
-github.com/grokify/go-glip v0.5.16 h1:C4zE/UyIC1tv+Rk8qDrfWuoENkVx7vkA4Bo2HxjBIyw=
-github.com/grokify/go-glip v0.5.16/go.mod h1:EpkVNtS6XNv5jicLQWOWrnOUVYoodSAIN2RZtkGJ36g=
+github.com/grokify/go-glip v0.5.17 h1:toO/FNGIoPYC5Fip1YJV0D55zOe/7DjCw+czfhgN+2U=
+github.com/grokify/go-glip v0.5.17/go.mod h1:dvyvTTXF9ArLuAybfS5JorgZ0YZuUB6esDY7fCZklPU=
 github.com/grokify/go-ringcentral-client v0.3.25 h1:fTRpcTdtu3QLJsqxRhz7oVIjQTgqbPvxVdy1WeYZ9wo=
 github.com/grokify/go-ringcentral-client v0.3.25/go.mod h1:j6oNqDzg0Ptp2ec4fSIptZrnkQUoDZ20uZ0pyyADMik=
 github.com/grokify/go-scim-client v0.1.23 h1:7K0deJnOIYUnFsqYa8Ee+hQmUVP0eagNr1xYhwYq1Sw=
