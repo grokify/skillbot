@@ -4,7 +4,7 @@ go 1.22.6
 toolchain go1.23.4
 
 require (
-	github.com/algolia/algoliasearch-client-go/v3 v3.31.3
+	github.com/algolia/algoliasearch-client-go/v3 v3.31.4
 	github.com/grokify/algoliautil v0.1.9
 	github.com/grokify/chatblox v0.2.8
 	github.com/grokify/go-glip v0.5.17
