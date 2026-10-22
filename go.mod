@@ -1,6 +1,7 @@
 module github.com/grokify/skillbot
 
-go 1.22.6
+go 1.23.2
+
 toolchain go1.23.4
 
 require (
@@ -11,7 +12,7 @@ require (
 	github.com/grokify/go-ringcentral-client v0.3.25
 	github.com/grokify/goauth v0.22.7
 	github.com/grokify/mogo v0.67.1
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.10.2
 )
 
 require (
